@@ -13,52 +13,29 @@ class Solution:
         print('--------------------------------------------')
         print(nums1)
         print(nums2)
+        n1 = len(nums1)
+        n2 = len(nums2)
+        if n1 > n2:
+            return self.findMedianSortedArrays(nums2, nums1)
 
-        if nums1 == []:
-            print('in s1 none')
-            return findMedian(nums2)
-        if nums2 == []:
-            print('in s2 none', findMedian(nums1))
-            return findMedian(nums1)
-        if len(nums1) <= 2:
-            if len(nums2) > 4:
-                cut = math.ceil(len(nums2) / 2) - 2
-                nums2 = nums2[cut, -cut]
-            nums = nums1 + nums2
-            nums.sort()
-            return findMedian(nums)
-        if len(nums2) <= 2:
+        if n1 <= 2:
             if len(nums1) > 4:
                 cut = math.ceil(len(nums1) / 2) - 2
                 nums1 = nums1[cut, -cut]
-            nums = nums1 + nums2
-            nums.sort()
-            return findMedian(nums)
+            nums1 += nums2
+            nums1.sort()
+            return self.findMedian(nums1)
 
-        median1 = findMedian(nums1)
-        median2 = findMedian(nums2)
-        smallLen = math.ceil(min(len(nums1), len(nums2)) / 2) - 1
-
-        # if median1 == median2:
-        #     return median1
-
-        print(median1)
-        print(median2)
-        print(smallLen)
-        if median1 < median2:
+        smallLen = math.ceil(n1 / 2) - 1
+        if self.findMedian(nums1) < self.findMedian(nums2):
             return Solution().findMedianSortedArrays(nums1[smallLen:],
                                                      nums2[:-smallLen])
         else:
             return Solution().findMedianSortedArrays(nums1[:-smallLen],
                                                      nums2[smallLen:])
 
-
-def findMedian(l: List[int]) -> float:
-    print('>>>>>>', l)
-    if len(l) % 2 == 0:
-        return (l[len(l) // 2] + l[len(l) // 2 - 1]) / 2
-    else:
-        return l[len(l) // 2]
+    def findMedian(self, l: List[int]) -> float:
+        return (l[len(l) // 2] + l[(len(l) - 1) // 2]) / 2
 
 
 if __name__ == "__main__":
