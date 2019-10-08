@@ -7,7 +7,6 @@ from typing import List
 
 
 class Solution:
-
     def findMedianSortedArrays(self, nums1: List[int],
                                nums2: List[int]) -> float:
         print('--------------------------------------------')
@@ -19,9 +18,9 @@ class Solution:
             return self.findMedianSortedArrays(nums2, nums1)
 
         if n1 <= 2:
-            if len(nums1) > 4:
-                cut = math.ceil(len(nums1) / 2) - 2
-                nums1 = nums1[cut, -cut]
+            if n2 > 4:
+                cut = math.ceil(n2 / 2) - 2
+                nums2 = nums2[cut, -cut]
             nums1 += nums2
             nums1.sort()
             return self.findMedian(nums1)
