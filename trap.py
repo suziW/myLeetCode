@@ -1,28 +1,30 @@
+# 42
 from typing import List
 
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        if len(height) <= 2:
-            return 0
-        pass
+        left, right = 0, len(height) - 1
+        leftMax, rightMax = 0, 0
+        v = 0
 
-    def differential(self, height: List[int]) -> List[int]:
-        diff = []
-        diff.append(int(height[0] >= 0))
-        for i, _ in enumerate(height[:-1]):
-            if height[i + 1] > height[i]:
-                diff.append(1)
-            elif height[i + 1] < height[i]:
-                diff.append(-1)
+        while left < right:
+            if height[left] < height[right]:
+                if height[left] > leftMax:
+                    leftMax = height[left]
+                else:
+                    v += leftMax - height[left]
+                left += 1
             else:
-                diff.append(0)
-            print(i, '=====>', height[i + 1], height[i], diff)
-        diff.append(int(0 >= height[-1]))
-        return diff
+                if height[right] > rightMax:
+                    rightMax = height[right]
+                else:
+                    v += rightMax - height[right]
+                right -= 1
+        return v
 
 
 if __name__ == "__main__":
     height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-    r = Solution().differential(height)
+    r = Solution().trap(height)
     print(r)
