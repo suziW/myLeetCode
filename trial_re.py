@@ -1,10 +1,8 @@
 import re
 
-s = 'MMMCMXCIVCMCC'
+s = 'aboutfucku'
 
-spacial = re.findall('IV|IX|XL|XC|CD|CM', s)
-rest = re.sub('IV|IX|XL|XC|CD|CM', '', s)
-rest = [c for c in rest]
-s = rest + spacial
-
-print(spacial, rest)
+spacial = re.findall('u', s)
+rest = re.sub('fuck', '', s)
+print(spacial)
+print(rest)
