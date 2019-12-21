@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/home/admin1/.conda/envs/magenta/bin/python",
+    "python.pythonPath": "/home/suzi/anaconda3/bin/python",
     "python.formatting.provider": "yapf"
 }
