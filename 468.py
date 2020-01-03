@@ -2,7 +2,7 @@ import re
 class Solution:
     def validIPAddress(self, IP: str) -> str:
         def isSubIp4(s):
-            if not re.match('[1-9]?[1-9]?[0-9]$', s): return False
+            if not re.match('[1-9][0-9]?[0-9]?$|0$', s): return False
             if int(s) > 255 or int(s) < 0: return False
             return True
         def isSubIp6(s):
@@ -14,6 +14,7 @@ class Solution:
             if len(ip_list) != 4:
                 return False
             for ip in ip_list:
+                print(ip)
                 if not isSubIp4(ip):
                     return False
             return True
@@ -37,6 +38,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    IP = "0.0.0.-0"
+    IP = "1.0.201.1"
     r = Solution().validIPAddress(IP)
     print(r)
