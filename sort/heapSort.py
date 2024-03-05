@@ -25,8 +25,8 @@ class Solution:
         return self.nums[0]
 
     def heapfy(self, i, heapsize):
-        lc = i * 2 + 1
-        rc = i * 2 + 2
+        lc = i * 2 + 1 # left child
+        rc = i * 2 + 2 # right child
         maxi = i
         if lc < heapsize and self.nums[lc] > self.nums[maxi]:
             maxi = lc
