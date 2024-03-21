@@ -38,8 +38,8 @@ class Solution:
 
 
 if __name__ == "__main__":
-    l = np.random.randint(0, 100, 9)
-    # l = [62, 9, 94, 5, 96, 55, 67, 20, 0, 4, 86, 55, 83, 71, 84, 25, 95, 68]
+    # l = np.random.randint(0, 100, 9)
+    l = [62, 9, 94, 5, 96, 55, 67, 20, 0, 4, 86, 55, 83, 71, 84, 25, 95, 68]
     print(l)
     Solution().quickSort(l)
     print('result is:', l)
